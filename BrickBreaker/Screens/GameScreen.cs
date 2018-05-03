@@ -23,7 +23,7 @@ namespace BrickBreaker
         Boolean leftArrowDown, downArrowDown, rightArrowDown, upArrowDown, spaceDown;
 
         // Scoring 
-        int score;
+        public static int score;
         // Game values
         int lives;
 
@@ -52,6 +52,7 @@ namespace BrickBreaker
         {
             //Scoring 
             Form1.service.startGame();
+
             score = 0;
 
             //set life counter
@@ -145,6 +146,8 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            scoreLabel.Text = Convert.ToString(score);
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -207,12 +210,20 @@ namespace BrickBreaker
         {
             // End scoring 
             Form1.service.endGame(score);
-            Form1.service.WasPersonalHighscore;
-            Form1.service.WasGlobalHighscore;
+
+            if (Form1.service.WasPersonalHighscore)
+            {
+                //end Card
+            }
+            if (Form1.service.WasGlobalHighscore)
+            {
+                //end card
+            }
 
             // Goes to the game over screen
             Form form = this.FindForm();
             MenuScreen ps = new MenuScreen();
+            
 
             ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 

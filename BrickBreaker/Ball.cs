@@ -6,6 +6,7 @@ namespace BrickBreaker
 {
     public class Ball
     {
+        
         public int x, y, xSpeed, ySpeed, size;
         public Color colour;
 
@@ -34,6 +35,8 @@ namespace BrickBreaker
 
             if (blockRec.IntersectsWith(ballRec))
             {
+                GameScreen.score += 10;
+
                 if (x <= (b.x + b.width))
                     xSpeed = Math.Abs(xSpeed);
 
